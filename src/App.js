@@ -24,10 +24,11 @@ export default function App() {
     const emailHandler = (event) => {
         setEmail(event.target.value);
     };
-    debugger;
+    // debugger;
+
     const registerSubmitHandler = (event) => {
         event.preventDefault();
-        if (!validate()) {
+        if (validate()) {
             setSubmitted(true);
             reset();
         }
@@ -66,7 +67,9 @@ export default function App() {
             };
         }
         setValid(temp);
-        return !temp.firstName && !temp.lastName && !temp.email;
+        return (
+            !temp.firstName.valid && !temp.lastName.valid && !temp.email.valid
+        );
     };
 
     return (
